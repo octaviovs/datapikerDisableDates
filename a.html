@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Calender Control Test</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+    <style>
+        .activo a {
+            background-color: green !important;
+            background-image: none !important;
+            color: #ffffff !important;
+        }
+    </style>
+    <script>
+        $(document).ready(function () {
+            var dias = ["28-10-2018", "2-11-2018"];
+
+            function activarDias(date) {
+                var sdate = $.datepicker.formatDate('d-m-yy', date)
+                if ($.inArray(sdate, dias) != -1) {
+                    return [true, "activo"];
+                }
+                return [false, ""];
+            }
+            $('#datepicker').datepicker(
+                { dateFormat: 'dd-mm-yy', beforeShowDay: activarDias }
+            );
+        })();
+
+    </script>
+</head>
+
+<body>
+    <div id="datepicker"></div>
+</body>
+
+</html>
